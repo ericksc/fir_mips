@@ -43,10 +43,10 @@ __start:
 # Arreglos en Memoria
 # Nombre			MIPS (simulador)	Supuesto procesador (set de instrucciones propuesto)		
 # Valor de numtaps		$s0			r1
-# Valor de sampleidx		r2
-# Dirección base de in		r3
-# Dirección base de out		r4 
-# Dirección base de firtaps	r5 
+# Valor de sampleidx		$s1			r2
+# Dirección base de in		$t0			r3
+# Dirección base de out		$t2			r4 
+# Dirección base de firtaps	$t1			r5 
 						
 #############################################################################################################
 	
