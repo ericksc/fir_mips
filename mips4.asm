@@ -42,12 +42,15 @@ $L4:
         
         # sampleidx + tapidx      
         addu $s2, $s1 , $t3
-        sll     $s2,$s2,2
+        
+        li $s4, 4
+        mul $s2, $s2, $s4
 
         addu    $s2,$t0,$s2
         lw      $s3,0($s2)
-            
-        sll     $s2,$t3,2
+        
+        li $s4, 4
+        mul $s2, $t3, $s4
 
         addu    $s4,$t1,$s2
         lw      $s2,0($s4)
@@ -59,6 +62,9 @@ $L4:
         b       $L4
 
 $L3:
-        sll     $s2,$s1,2
+
+        li $s4, 4
+        mul $s2, $s1, $s4
+
         addu    $s2,$t2,$s2
         sw      $t4,0($s2)
