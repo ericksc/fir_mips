@@ -88,7 +88,7 @@ $L4:
         # (in[sampleidx+tapidx]) * (firtaps[tapidx])
         mul  	$s2,  	$s2, 	$s3	# $s2 <- mul($s2, $s3)
         
-        # outval +=
+        # Acumulación. outval +=
         add 	$t4, 	$t4, 	$s2	# $t4 <- add($t4 , $s2)
 
 	# sampleidx++
