@@ -63,7 +63,9 @@ __start:
 #############################################################################################################
 $L4:
         # tapidx<numtaps
-        slt     $s2,	$t3,	$s0  	# $s2 <- cmpgt($s0, $t3)
+        # Verficacion de la condición del for loop. tapidx < numtaps
+        slt     $s2,	$t3,	$s0  	# $s2 <- cmpgt(r1, $t3)
+        # Salto condicional para salir del ciclo for loop
         beq     $s2,	$0,	$L3	# bcond($s2, $L3)
         
     	# Constante alineamiento de memoria
@@ -75,12 +77,14 @@ $L4:
         addu 	$s2, 	$s1 , 	$t3	# $s1 <- add(r2 , $t3)
         # Alinear el acceso de memoria     
         mul 	$s2, 	$s2, 	$s4	# $s2 <- mul($s2, $s4)
+        # Calculo de posición de memoria in base + [sampleidx+tapidx]
         addu    $s2,	$t0,	$s2     # $s2 <- add(r3 , $s2)
         # in[sampleidx+tapidx]
         lw      $s3,	0($s2)		# $s3 <- idi($s2)
 
         # Alinear el acceso de memoria        
         mul 	$s2, 	$t3, 	$s4	# $s2 <- mul($t3, $s4)
+        # Cálculo de posición de memoria firtaps base + tapidx
         addu    $s4,	$t1,	$s2	# $s2 <- add($t0 , $s2)
         # firtaps[tapidx]
         lw      $s2,	0($s4)		# $s2 <- idi($s4)
@@ -92,7 +96,9 @@ $L4:
         add 	$t4, 	$t4, 	$s2	# $t4 <- add($t4 , $s2)
 
 	# sampleidx++
+	# obtención de constante 1 para incremento
 	li 	$s2, 	1		# $s2 <- movi(1)
+	# sumar sampleidx = sampleidx + 1
 	add 	$t3, 	$t3 ,	$s2	# $t3 <- add($t3 , $s2)
 	
 	# Continuar con el ciclo
