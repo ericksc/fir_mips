@@ -71,27 +71,20 @@ $L4:
         slt     $s2,	$t3,	$s0  	# $s2 <- cmpgt(r1, $t3)
         # Salto condicional para salir del ciclo for loop
         beq     $s2,	$0,	$L3	# bcond($s2, $L3)
-        
-    	# Constante alineamiento de memoria
-    	# Suponga procesador de 32 bits
-    	# numeros de 32 bits -> 4 Bytes  	 
-        li 	$s4, 	4		# $s4 <- movi(4)
 
         # sampleidx + tapidx
         addu 	$s2, 	$s1 , 	$t3	# $s1 <- add(r2 , $t3)
         # Alinear el acceso de memoria     
         mul 	$s2, 	$s2, 	$s4	# $s2 <- mul($s2, $s4)
         # Calculo de posición de memoria in base + [sampleidx+tapidx]
-        addu    $s2,	$t0,	$s2     # $s2 <- add(r3 , $s2)
-        # in[sampleidx+tapidx]
-        lw      $s3,	0($s2)		# $s3 <- idi($s2)
+        
+        #$s3 <- ldr($t0,	$s2)
 
         # Alinear el acceso de memoria        
         mul 	$s2, 	$t3, 	$s4	# $s2 <- mul($t3, $s4)
         # Cálculo de posición de memoria firtaps base + tapidx
-        addu    $s4,	$t1,	$s2	# $s2 <- add($t0 , $s2)
-        # firtaps[tapidx]
-        lw      $s2,	0($s4)		# $s2 <- idi($s4)
+        
+         #$s2 <- ldr($t1,	$s2)
         
         # (in[sampleidx+tapidx]) * (firtaps[tapidx])
         mul  	$s2,  	$s2, 	$s3	# $s2 <- mul($s2, $s3)

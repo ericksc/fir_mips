@@ -88,9 +88,9 @@ $L4:
         # Alinear el acceso de memoria        
         mul 	$s2, 	$t3, 	$s4	# $s2 <- mul($t3, $s4)
         # Cálculo de posición de memoria firtaps base + tapidx
-        addu    $s4,	$t1,	$s2	# $s2 <- add($t0 , $s2)
+        addu    $s5,	$t1,	$s2	# $s2 <- add($t0 , $s2)
         # firtaps[tapidx]
-        lw      $s2,	0($s4)		# $s2 <- idi($s4)
+        lw      $s2,	0($s5)		# $s2 <- idi($s4)
         
         # (in[sampleidx+tapidx]) * (firtaps[tapidx])
         mul  	$s2,  	$s2, 	$s3	# $s2 <- mul($s2, $s3)
