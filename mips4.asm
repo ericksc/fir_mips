@@ -34,9 +34,7 @@ __start:
 	li 	$s0, 	3	        # "r1" numtaps
 
 	li 	$s1, 	0	        # "r2" sampleidx					
-	li 	$t4, 	0            	# $t3 sea outval = 0. inicialmente
-	li 	$t3, 	0            	# $t4 sea tapidx = 0. inicialmente
-	li 	$t5, 	6            	# $t5 sea size = 6.	
+
 
 ############################################################################################################
 # Terminando inicialización de
@@ -54,7 +52,11 @@ __start:
 # outval			$t4
 # size				$t5								
 #############################################################################################################
-	
+
+	li 	$t4, 	0            	# $t3 sea outval = 0. inicialmente
+	li 	$t3, 	0            	# $t4 sea tapidx = 0. inicialmente
+	li 	$t5, 	6            	# $t5 sea size = 6.	
+			
 #############################################################################################################
 # Variables temporales
 # $s2
