@@ -47,12 +47,16 @@ __start:
 # Dirección base de in		$t0			r3
 # Dirección base de out		$t2			r4 
 # Dirección base de firtaps	$t1			r5 
-						
+
+# tapidx			$t3
+# outval			$t4
+# size				$t5
+									
 #############################################################################################################
 	
 $L4:
         # tapidx<numtaps
-        slt     $s2,	$t3,	$s0  	# $s2 <- cmpgt($t2,$s0)
+        slt     $s2,	$t3,	$s0  	# $s2 <- cmpgt($s0, $t3)
         beq     $s2,	$0,	$L3	# bcond($s2, $L3)
         
         # sampleidx + tapidx      
