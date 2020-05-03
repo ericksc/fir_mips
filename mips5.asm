@@ -58,12 +58,7 @@ __start:
 	li 	$t3, 	0            	# $t4 <- movi(0)
 	# $t5 sea size = 6
 	li 	$t5, 	6            	# $t5 <- movi(6)	
-
 			
-    	# Constante alineamiento de memoria
-    	# Suponga procesador de 32 bits
-    	# numeros de 32 bits -> 4 Bytes  	 
-        li 	$s4, 	4		# $s4 <- movi(4)			
 #############################################################################################################
 # Variables temporales
 # $s2
@@ -77,6 +72,11 @@ $L4:
         # Salto condicional para salir del ciclo for loop
         beq     $s2,	$0,	$L3	# bcond($s2, $L3)
         
+    	# Constante alineamiento de memoria
+    	# Suponga procesador de 32 bits
+    	# numeros de 32 bits -> 4 Bytes  	 
+        li 	$s4, 	4		# $s4 <- movi(4)
+
         # sampleidx + tapidx
         addu 	$s2, 	$s1 , 	$t3	# $s1 <- add(r2 , $t3)
         # Alinear el acceso de memoria     
