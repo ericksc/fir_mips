@@ -7,13 +7,13 @@
 
 fir:
 	  .data
-in:	  .space  48		# suponer arreglo de 10 + 2 condiciones iniciales = 12. 12 * 4 = 48
-out:	  .space  40		# suponer arreglo de 10  condiciones iniciales = 10. 10 * 4 = 40
-firtaps:  .space  12		# suponer arreglo de 3  firtaps 3 * 4 = 12
+in:	  .space  48			# suponer arreglo de 10 + 2 condiciones iniciales = 12. 12 * 4 = 48
+out:	  .space  40			# suponer arreglo de 10  condiciones iniciales = 10. 10 * 4 = 40
+firtaps:  .space  12			# suponer arreglo de 3  firtaps 3 * 4 = 12
 
 	.text
 __start:
-				# inicializando arreglo in
+					# inicializando arreglo in
 	la	$t0,	in		# "r3" Dirección base de in
 	li	$s2, 	1
 
@@ -21,11 +21,11 @@ __start:
 	sw 	$s2, 	8($t0)		#  inicializando el 3er elemento del arreglo in como 1 para tener vector inicial [0,0,1,0,0,0,0,0...]
 	sw 	$s2, 	12($t0)
 	
-				# inicializando arreglo out
-	la	$t2, 	out	# "r4" Dirección base de out
+					# inicializando arreglo out
+	la	$t2, 	out		# "r4" Dirección base de out
 
-				# inicializando arreglo firtaps
-	la	$t1, 	firtaps	# "r5" Dirección base de firtaps
+					# inicializando arreglo firtaps
+	la	$t1, 	firtaps		# "r5" Dirección base de firtaps
 	li 	$s2, 	1
 	sw 	$s2, 	($t1)
 	li 	$s2, 	-2
@@ -33,14 +33,14 @@ __start:
 	li 	$s2, 	-3
 	sw 	$s2, 	8($t1)
 
-				# inicializando numtaps
+					# inicializando numtaps
 	li 	$s0, 	3	        # "r1" numtaps
 
 	li 	$s1, 	0	        # "r2" sampleidx
 					
-	li 	$t4, 	0            # $t3 sea outval = 0. inicialmente
-	li 	$t3, 	0            # $t4 sea tapidx = 0. inicialmente
-	li 	$t5, 	6            # $t5 sea size = 6.	
+	li 	$t4, 	0            	# $t3 sea outval = 0. inicialmente
+	li 	$t3, 	0            	# $t4 sea tapidx = 0. inicialmente
+	li 	$t5, 	6            	# $t5 sea size = 6.	
 	
 $L4:
         # tapidx<numtaps
@@ -54,24 +54,24 @@ $L4:
         mul 	$s2, 	$s2, 	$s4	# $s2 <- mul($s2, $s4)
 
         addu    $s2,	$t0,	$s2     # $s2 <- add($t0 , $s2)
-        lw      $s3,	0($s2)	# $s3 <- idi($s2)
+        lw      $s3,	0($s2)		# $s3 <- idi($s2)
         
         li 	$s4, 	4		# $s4 <- movi(4)
         mul 	$s2, 	$t3, 	$s4	# $s2 <- mul($t3, $s4)
 
         addu    $s4,	$t1,	$s2	# $s2 <- add($t0 , $s2)
-        lw      $s2,	0($s4)	# $s2 <- idi($s4)
+        lw      $s2,	0($s4)		# $s2 <- idi($s4)
         
         mul  	$s2,  	$s2, 	$s3	# $s2 <- mul($s2, $s3)
         add 	$t4, 	$t4, 	$s2	# $t4 <- add($t4 , $s2)
 
 	li 	$s4, 	1		# $s4 <- movi(1)
 	add 	$t3, 	$t3 ,	$s4	# $t3 <- add($t3 , $s4)
-        b       $L4		# branch ($L4)
+        b       $L4			# branch ($L4)
 
 $L3:
         li 	$s4, 	4		# $s4 <- movi(4)
         mul 	$s2, 	$s1, 	$s4	# $s2 <- mul($s1, $s4)
 
         addu    $s2,	$t2,	$s2	# $s2 <- add($t2 , $s2)
-        sw      $t4,	0($s2)	# sti($s2, $t4)
+        sw      $t4,	0($s2)		# sti($s2, $t4)
