@@ -59,6 +59,10 @@ __start:
 	# $t5 sea size = 6
 	li 	$t5, 	6            	# $t5 <- movi(6)	
 			
+    	# Constante alineamiento de memoria
+    	# Suponga procesador de 32 bits
+    	# numeros de 32 bits -> 4 Bytes  	 
+        li 	$s4, 	4		# $s4 <- movi(4)			
 #############################################################################################################
 # Variables temporales
 # $s2
@@ -71,19 +75,21 @@ $L4:
         slt     $s2,	$t3,	$s0  	# $s2 <- cmpgt(r1, $t3)
         # Salto condicional para salir del ciclo for loop
         beq     $s2,	$0,	$L3	# bcond($s2, $L3)
-
+        
         # sampleidx + tapidx
         addu 	$s2, 	$s1 , 	$t3	# $s1 <- add(r2 , $t3)
         # Alinear el acceso de memoria     
         mul 	$s2, 	$s2, 	$s4	# $s2 <- mul($s2, $s4)
         # Calculo de posición de memoria in base + [sampleidx+tapidx]
         
+        # in[sampleidx+tapidx]
         #$s3 <- ldr($t0,	$s2)
 
         # Alinear el acceso de memoria        
         mul 	$s2, 	$t3, 	$s4	# $s2 <- mul($t3, $s4)
         # Cálculo de posición de memoria firtaps base + tapidx
         
+        # firtaps[tapidx]
          #$s2 <- ldr($t1,	$s2)
         
         # (in[sampleidx+tapidx]) * (firtaps[tapidx])
