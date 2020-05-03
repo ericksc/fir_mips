@@ -58,7 +58,6 @@ __start:
 	li 	$t3, 	0            	# $t4 <- movi(0)
 	# $t5 sea size = 6
 	li 	$t5, 	6            	# $t5 <- movi(6)	
-
 			
     	# Constante alineamiento de memoria
     	# Suponga procesador de 32 bits
