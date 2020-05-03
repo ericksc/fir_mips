@@ -16,11 +16,9 @@ __start:
 					# inicializando arreglo in
 	la	$t0,	in		# "r3" Dirección base de in
 	li	$s2, 	1
-
-	sw 	$s2, 	4($t0)
-	sw 	$s2, 	8($t0)		#  inicializando el 3er elemento del arreglo in como 1 para tener vector inicial [0,0,1,0,0,0,0,0...]
+	sw 	$s2, 	4($t0)		#  inicializando algunos valores del arreglo IN
+	sw 	$s2, 	8($t0)		
 	sw 	$s2, 	12($t0)
-	
 					# inicializando arreglo out
 	la	$t2, 	out		# "r4" Dirección base de out
 
@@ -32,15 +30,25 @@ __start:
 	sw 	$s2, 	4($t1)
 	li 	$s2, 	-3
 	sw 	$s2, 	8($t1)
-
 					# inicializando numtaps
 	li 	$s0, 	3	        # "r1" numtaps
 
-	li 	$s1, 	0	        # "r2" sampleidx
-					
+	li 	$s1, 	0	        # "r2" sampleidx					
 	li 	$t4, 	0            	# $t3 sea outval = 0. inicialmente
 	li 	$t3, 	0            	# $t4 sea tapidx = 0. inicialmente
 	li 	$t5, 	6            	# $t5 sea size = 6.	
+
+############################################################################################################
+# Terminando inicialización de
+# Arreglos en Memoria
+# Nombre			MIPS (simulador)	Supuesto procesador (set de instrucciones propuesto)		
+# Valor de numtaps		$s0			r1
+# Valor de sampleidx		r2
+# Dirección base de in		r3
+# Dirección base de out		r4 
+# Dirección base de firtaps	r5 
+						
+#############################################################################################################
 	
 $L4:
         # tapidx<numtaps
